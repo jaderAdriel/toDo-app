@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/users")
@@ -40,5 +42,15 @@ public class UserController {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(user.getId()).toUri();
 
         return ResponseEntity.created(uri).body(new UserResponseDTO(user));
+    }
+
+    @DeleteMapping(value="/{id}")
+    public ResponseEntity<Map<String, String>> delete(@PathVariable Long id) {
+        service.deleteById(id);
+
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Deleted with success");
+
+        return ResponseEntity.ok().body(response);
     }
 }

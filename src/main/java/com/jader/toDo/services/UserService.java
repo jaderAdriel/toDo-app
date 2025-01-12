@@ -29,6 +29,12 @@ public class UserService {
         }
     }
 
+    public void deleteById(Long id) {
+        if (!repository.existsById(id)) throw new ResourceNotFoundException(id);
+
+        repository.deleteById(id);
+    }
+
     public List<User> findAll(){
         return repository.findAll();
     }
