@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/tasks")
@@ -41,6 +43,16 @@ public class TaskController {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(task.getId()).toUri();
 
         return ResponseEntity.created(uri).body(new TaskResponseDTO(task));
+    }
+
+    @DeleteMapping(value="/{id}")
+    public ResponseEntity<Map<String, String>> delete(@PathVariable Long id) {
+        service.deleteById(id);
+
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Deleted with success");
+
+        return ResponseEntity.ok().body(response);
     }
 
     @PutMapping(value="/{id}")

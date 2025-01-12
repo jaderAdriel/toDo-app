@@ -47,6 +47,12 @@ public class TaskService {
     }
 
 
+    public void deleteById(Long id) {
+        if (!taskRepository.existsById(id)) throw new ResourceNotFoundException(id);
+
+        taskRepository.deleteById(id);
+    }
+
     public List<Task> findAll(){
         return taskRepository.findAll();
     }
