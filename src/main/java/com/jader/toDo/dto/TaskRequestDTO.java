@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
 
-public class TaskResquestDTO {
+public class TaskRequestDTO {
     @NotNull(message = "Title is required")
     private String title;
 
@@ -23,10 +23,10 @@ public class TaskResquestDTO {
     @NotNull(message = "User id is required")
     private Long userId;
 
-    public TaskResquestDTO() {
+    public TaskRequestDTO() {
     }
 
-    public TaskResquestDTO(Task task) {
+    public TaskRequestDTO(Task task) {
         this.title = task.getTitle();
         this.description = task.getDescription();
         this.creationDate = task.getCreationDate();
