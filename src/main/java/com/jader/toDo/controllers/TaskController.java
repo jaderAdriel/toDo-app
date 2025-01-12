@@ -33,7 +33,7 @@ public class TaskController {
     }
 
     @PostMapping
-    public ResponseEntity<TaskResponseDTO> insert(@RequestBody TaskResquestDTO obj) {
+    public ResponseEntity<TaskResponseDTO> insert(@RequestBody @Valid TaskRequestDTO obj) {
         Task task = service.insert(obj);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(task.getId()).toUri();
