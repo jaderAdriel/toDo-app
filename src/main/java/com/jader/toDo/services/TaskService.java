@@ -41,6 +41,8 @@ public class TaskService {
         // Copia as propiedades do objeto da requisição para a entidade, exceto os nulos
         BeanUtils.copyProperties(obj, task, getNullPropertyNames(obj));
 
+        taskRepository.save(task);
+
         return task;
     }
 
