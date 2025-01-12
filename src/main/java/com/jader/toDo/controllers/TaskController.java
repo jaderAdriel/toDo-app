@@ -1,9 +1,10 @@
 package com.jader.toDo.controllers;
 
 import com.jader.toDo.dto.TaskResponseDTO;
-import com.jader.toDo.dto.TaskResquestDTO;
+import com.jader.toDo.dto.TaskRequestDTO;
 import com.jader.toDo.entities.Task;
 import com.jader.toDo.services.TaskService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
