@@ -1,6 +1,6 @@
 package com.jader.toDo.services;
 
-import com.jader.toDo.dto.UserRequestDTO;
+import com.jader.toDo.dto.UserCreateRequestDTO;
 import com.jader.toDo.entities.User;
 import com.jader.toDo.repositories.UserRepository;
 import com.jader.toDo.services.exceptions.DuplicateResourceException;
@@ -21,7 +21,7 @@ public class UserService {
         this.repository = userRepository;
     }
 
-    public User insert(UserRequestDTO user) {
+    public User insert(UserCreateRequestDTO user) {
         try {
             return repository.save(user.toUser());
         } catch (DataIntegrityViolationException e) {

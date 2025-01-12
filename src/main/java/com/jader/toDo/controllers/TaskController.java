@@ -1,7 +1,7 @@
 package com.jader.toDo.controllers;
 
 import com.jader.toDo.dto.TaskResponseDTO;
-import com.jader.toDo.dto.TaskRequestDTO;
+import com.jader.toDo.dto.TaskCreateRequestDTO;
 import com.jader.toDo.entities.Task;
 import com.jader.toDo.services.TaskService;
 import jakarta.validation.Valid;
@@ -34,7 +34,7 @@ public class TaskController {
     }
 
     @PostMapping
-    public ResponseEntity<TaskResponseDTO> insert(@RequestBody @Valid TaskRequestDTO obj) {
+    public ResponseEntity<TaskResponseDTO> insert(@RequestBody @Valid TaskCreateRequestDTO obj) {
         Task task = service.insert(obj);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(task.getId()).toUri();

@@ -1,6 +1,6 @@
 package com.jader.toDo.services;
 
-import com.jader.toDo.dto.TaskRequestDTO;
+import com.jader.toDo.dto.TaskCreateRequestDTO;
 import com.jader.toDo.entities.Task;
 import com.jader.toDo.entities.User;
 import com.jader.toDo.repositories.TaskRepository;
@@ -21,7 +21,7 @@ public class TaskService {
         this.userService = userService;
     }
 
-    public Task insert(TaskRequestDTO obj) {
+    public Task insert(TaskCreateRequestDTO obj) {
         User user = userService.findById(obj.getUserId());
         Task task = obj.toTask(user);
 

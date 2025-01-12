@@ -1,6 +1,6 @@
 package com.jader.toDo.controllers;
 
-import com.jader.toDo.dto.UserRequestDTO;
+import com.jader.toDo.dto.UserCreateRequestDTO;
 import com.jader.toDo.dto.UserResponseDTO;
 import com.jader.toDo.entities.User;
 import com.jader.toDo.services.UserService;
@@ -35,7 +35,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponseDTO> insert(@Valid @RequestBody UserRequestDTO obj) {
+    public ResponseEntity<UserResponseDTO> insert(@Valid @RequestBody UserCreateRequestDTO obj) {
         User user = service.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(user.getId()).toUri();
 

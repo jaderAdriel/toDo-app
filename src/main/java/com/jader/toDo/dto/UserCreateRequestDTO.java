@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import com.jader.toDo.entities.User;
 import jakarta.validation.constraints.NotNull;
 
-public class UserRequestDTO {
+public class UserCreateRequestDTO {
     @NotNull(message = "Name is required")
     private String name;
 
@@ -16,16 +16,16 @@ public class UserRequestDTO {
     @NotBlank(message = "Password is required")
     private String password;
 
-    public UserRequestDTO() {
+    public UserCreateRequestDTO() {
     }
 
-    public UserRequestDTO(String name, String email, String password) {
+    public UserCreateRequestDTO(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
     }
 
-    public UserRequestDTO(User user) {
+    public UserCreateRequestDTO(User user) {
         this.name = user.getName();
         this.email = user.getEmail();
         this.password = user.getPassword();
