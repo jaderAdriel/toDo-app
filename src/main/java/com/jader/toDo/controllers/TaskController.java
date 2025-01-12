@@ -2,6 +2,7 @@ package com.jader.toDo.controllers;
 
 import com.jader.toDo.dto.TaskResponseDTO;
 import com.jader.toDo.dto.TaskCreateRequestDTO;
+import com.jader.toDo.dto.TaskUpdateRequestDTO;
 import com.jader.toDo.entities.Task;
 import com.jader.toDo.services.TaskService;
 import jakarta.validation.Valid;
@@ -40,5 +41,12 @@ public class TaskController {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(task.getId()).toUri();
 
         return ResponseEntity.created(uri).body(new TaskResponseDTO(task));
+    }
+
+    @PutMapping(value="/{id}")
+    public ResponseEntity<TaskResponseDTO> update(@RequestBody @Valid TaskUpdateRequestDTO obj, @PathVariable Long id) {
+        Task task = service.update(obj, id);
+
+        return ResponseEntity.ok(new TaskResponseDTO(task));
     }
 }
